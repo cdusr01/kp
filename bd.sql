@@ -17,7 +17,7 @@ CREATE TABLE information_schema.kind_credit (
 );
 
 CREATE TABLE public.credits (
-	credit_id int4 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1 NO CYCLE) NOT NULL,
+	credit_id int4 GENERATED ALWAYS AS IDENTITY NOT NULL,
 	kind_credit_id int4 NOT NULL,
 	client_id int4 NOT NULL,
 	summa numeric NOT NULL,
