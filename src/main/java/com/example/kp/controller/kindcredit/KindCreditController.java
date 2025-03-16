@@ -59,7 +59,7 @@ public class KindCreditController {
             dialogStage.initOwner(BankApp.primaryStage);
             dialogStage.setMinWidth(400);
             dialogStage.setScene(new Scene(loader.load()));
-            dialogStage.setTitle("Добавить вид кредита");
+            dialogStage.setTitle("Добавить кредит");
             AddKindCreditDialog controller = loader.getController();
             controller.setDialogStage(dialogStage);
             dialogStage.showAndWait();
@@ -98,7 +98,7 @@ public class KindCreditController {
                 dialogStage.initOwner(BankApp.primaryStage);
                 dialogStage.setMinWidth(400);
                 dialogStage.setScene(new Scene(loader.load()));
-                dialogStage.setTitle("Редактировать клиента");
+                dialogStage.setTitle("Редактировать кредит");
                 EditKindCreditDialog controller = loader.getController();
                 controller.setDialogStage(dialogStage, currentItem.getKindCredit());
                 dialogStage.showAndWait();
