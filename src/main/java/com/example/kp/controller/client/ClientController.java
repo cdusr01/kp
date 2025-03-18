@@ -72,16 +72,18 @@ public class ClientController {
     void deleteClient(ActionEvent event) {
         ClientTableItem currentItem = clientsTable.getSelectionModel().getSelectedItem();
         int currentItemId = clientsTable.getSelectionModel().getSelectedIndex();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Подтверждение удаления");
-        alert.setHeaderText("Удаление записи");
-        alert.setContentText("Вы действительно хотите удалить \"" + currentItem.getName() + "\"?");
+        if (currentItemId != -1) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Подтверждение удаления");
+            alert.setHeaderText("Удаление записи");
+            alert.setContentText("Вы действительно хотите удалить \"" + currentItem.getName() + "\"?");
 
-        Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            new ClientService().delete(currentItem.getClient());
-            clientsTable.getItems().remove(currentItemId);
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                new ClientService().delete(currentItem.getClient());
+                clientsTable.getItems().remove(currentItemId);
+            }
         }
     }
 

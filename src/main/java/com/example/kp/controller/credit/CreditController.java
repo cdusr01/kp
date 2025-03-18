@@ -84,16 +84,18 @@ public class CreditController {
     void deleteCredit(ActionEvent event) {
         CreditTableItem currentItem = creditsTable.getSelectionModel().getSelectedItem();
         int currentItemId = creditsTable.getSelectionModel().getSelectedIndex();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Подтверждение удаления");
-        alert.setHeaderText("Удаление записи");
-        alert.setContentText("Вы действительно хотите удалить \""+ currentItem.getName() + "\"?");
+        if (currentItemId != -1) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Подтверждение удаления");
+            alert.setHeaderText("Удаление записи");
+            alert.setContentText("Вы действительно хотите удалить \"" + currentItem.getName() + "\"?");
 
-        Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            new CreditService().delete(currentItem.getCredit());
-            creditsTable.getItems().remove(currentItemId);
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                new CreditService().delete(currentItem.getCredit());
+                creditsTable.getItems().remove(currentItemId);
+            }
         }
     }
 

@@ -73,16 +73,18 @@ public class KindCreditController {
     void deleteKindCredit(ActionEvent event) {
         KindCreditTableItem currentItem = kindCreditsTable.getSelectionModel().getSelectedItem();
         int currentItemId = kindCreditsTable.getSelectionModel().getSelectedIndex();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Подтверждение удаления");
-        alert.setHeaderText("Удаление записи");
-        alert.setContentText("Вы действительно хотите удалить \"" + currentItem.getName() + "\"?");
+        if (currentItemId != -1) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Подтверждение удаления");
+            alert.setHeaderText("Удаление записи");
+            alert.setContentText("Вы действительно хотите удалить \"" + currentItem.getName() + "\"?");
 
-        Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            new KindCreditService().delete(currentItem.getKindCredit());
-            kindCreditsTable.getItems().remove(currentItemId);
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                new KindCreditService().delete(currentItem.getKindCredit());
+                kindCreditsTable.getItems().remove(currentItemId);
+            }
         }
     }
 
