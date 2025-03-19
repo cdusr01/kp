@@ -17,8 +17,8 @@ CREATE TABLE public.kind_credit (
 
 CREATE TABLE public.credits (
 	credit_id int4 GENERATED ALWAYS AS IDENTITY PRIMARY KEY NOT NULL,
-	kind_credit_id int4 NOT NULL REFERENCES clients(client_id),
-	client_id int4 NOT NULL REFERENCES kind_credit(kind_credit_id),
+	kind_credit_id int4 NOT NULL REFERENCES kind_credit(kind_credit_id),
+	client_id int4 NOT NULL REFERENCES clients(client_id),
 	summa numeric NOT NULL,
 	"date" date NOT NULL
 );
