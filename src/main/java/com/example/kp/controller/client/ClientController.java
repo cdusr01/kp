@@ -11,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -50,6 +52,9 @@ public class ClientController {
     private TableColumn<?, ?> phoneColumn;
 
     @FXML
+    private Button offButton;
+
+    @FXML
     void addClient(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(BankApp.class.getResource("add-client-dialog.fxml"));
@@ -84,6 +89,11 @@ public class ClientController {
                 new ClientService().delete(currentItem.getClient());
                 clientsTable.getItems().remove(currentItemId);
             }
+        }else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Предупреждение");
+            alert.setContentText("Выберите запись в таблице для удаления");
+            alert.showAndWait();
         }
     }
 

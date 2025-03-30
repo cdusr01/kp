@@ -5,6 +5,8 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -17,7 +19,7 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Button fx:id="creditsButton" contentDisplay="CENTER" mnemonicParsing="false" text="Кредиты">
                                  <HBox.margin>
@@ -34,31 +36,66 @@
                                     <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#powerOff" text="off">
+                              <Button mnemonicParsing="false" onAction="#powerOff" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <ImageView>
+                                       <image>
+                                          <Image url="@off.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                                  <HBox.margin>
                                     <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                                  </HBox.margin>
                               </Button>
                            </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#addCredit" text="add">
+                              <Button mnemonicParsing="false" onAction="#addCredit" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <ImageView>
+                                       <image>
+                                          <Image url="@add.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                                  <HBox.margin>
                                     <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#editCredit" text="edit">
+                              <Button mnemonicParsing="false" onAction="#editCredit" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <ImageView>
+                                       <image>
+                                          <Image url="@edit.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                                  <HBox.margin>
                                     <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#deleteCredit" text="delete">
+                              <Button mnemonicParsing="false" onAction="#deleteCredit" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <ImageView>
+                                       <image>
+                                          <Image url="@delete.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                                  <HBox.margin>
                                     <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#updateCredits" text="update">
+                              <Button mnemonicParsing="false" onAction="#updateCredits" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <ImageView>
+                                       <image>
+                                          <Image url="@update.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                                  <HBox.margin>
                                     <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                                  </HBox.margin>

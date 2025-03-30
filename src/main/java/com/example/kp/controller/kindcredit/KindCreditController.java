@@ -86,6 +86,12 @@ public class KindCreditController {
                 kindCreditsTable.getItems().remove(currentItemId);
             }
         }
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Предупреждение");
+            alert.setContentText("Выберите запись в таблице для удаления");
+            alert.showAndWait();
+        }
     }
 
     @FXML
