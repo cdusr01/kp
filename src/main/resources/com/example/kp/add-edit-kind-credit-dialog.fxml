@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" prefWidth="339.0" vgap="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kp.controller.kindcredit.EditKindCreditDialog">
+<GridPane alignment="center" hgap="10" prefWidth="339.0" vgap="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kp.controller.kindcredit.AddEditKindCreditDialog">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
@@ -21,7 +21,7 @@
       <TextField fx:id="rateField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Label text="Условия:" GridPane.rowIndex="1" />
       <TextField fx:id="conditionField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Button fx:id="okButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleOk" text="ОК" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+      <Button fx:id="okButton" contentDisplay="CENTER" mnemonicParsing="false" text="ОК" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
       <Label fx:id="errorLabel" GridPane.columnSpan="2" GridPane.rowIndex="5" />
    </children>
    <columnConstraints>

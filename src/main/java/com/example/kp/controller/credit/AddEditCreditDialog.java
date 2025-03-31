@@ -1,6 +1,5 @@
 package com.example.kp.controller.credit;
 
-import com.example.kp.controller.client.ClientTableItem;
 import com.example.kp.model.Client;
 import com.example.kp.model.Credit;
 import com.example.kp.model.KindCredit;
@@ -17,12 +16,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
-public class AddCreditDialog {
+public class AddEditCreditDialog {
 
     @FXML
     private DatePicker dateField;
@@ -42,9 +42,9 @@ public class AddCreditDialog {
     @FXML
     private ComboBox<Client> userField;
     private Stage dialogStage;
+    private Credit credit;
 
-    @FXML
-    void handleOk(ActionEvent event) {
+    void add() {
         try {
             if (userField.getSelectionModel().getSelectedIndex() == -1){
                 throw new IllegalArgumentException("Нужно заполнить поле \"Клиент\"");
@@ -67,7 +67,7 @@ public class AddCreditDialog {
         }
     }
 
-    public void setDialogStage(Stage dialogStage) {
+    public void setAddDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
 
         List<Client> clients = new ClientService().findAll();
@@ -75,5 +75,42 @@ public class AddCreditDialog {
         List<KindCredit> kindCredits = new KindCreditService().findAll();
         kindCreditField.getItems().addAll(FXCollections.observableList(kindCredits));
         dateField.setValue(LocalDate.now());
+
+        okButton.setOnAction((www) -> add());
+    }
+
+    void edit() {
+        try {
+            credit.setClient(userField.getSelectionModel().getSelectedItem());
+            credit.setKindCredit(kindCreditField.getSelectionModel().getSelectedItem());
+            credit.setSumma(sumField.getText());
+            credit.setDate((Date.from(dateField.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
+
+            new CreditService().update(credit);
+
+            dialogStage.close();
+        } catch (IllegalArgumentException e) {
+            errorLabel.setText(e.getMessage());
+        }
+    }
+
+    public void setEditDialogStage(Stage dialogStage, Credit credit) {
+        this.dialogStage = dialogStage;
+        this.credit = credit;
+
+        List<Client> clients = new ClientService().findAll();
+        userField.getItems().addAll(FXCollections.observableList(clients));
+        List<KindCredit> kindCredits = new KindCreditService().findAll();
+        kindCreditField.getItems().addAll(FXCollections.observableList(kindCredits));
+        dateField.setValue(LocalDate.now());
+
+        userField.setValue(credit.getClient());
+        kindCreditField.setValue(credit.getKindCredit());
+        sumField.setText(credit.getSumma().toString());
+        dateField.setValue(Instant.ofEpochMilli(credit.getDate().getTime())
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate());
+
+        okButton.setOnAction((www) -> edit());
     }
 }

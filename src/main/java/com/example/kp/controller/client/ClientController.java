@@ -11,8 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -57,15 +55,15 @@ public class ClientController {
     @FXML
     void addClient(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(BankApp.class.getResource("add-client-dialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(BankApp.class.getResource("add-edit-client-dialog.fxml"));
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(BankApp.primaryStage);
             dialogStage.setMinWidth(400);
             dialogStage.setScene(new Scene(loader.load()));
             dialogStage.setTitle("Добавить клиента");
-            AddClientDialog controller = loader.getController();
-            controller.setDialogStage(dialogStage);
+            AddEditClientDialog controller = loader.getController();
+            controller.setAddDialogStage(dialogStage);
             dialogStage.showAndWait();
             updateList();
         } catch (IOException e) {
@@ -103,15 +101,15 @@ public class ClientController {
         int currentItemId = clientsTable.getSelectionModel().getSelectedIndex();
         if (currentItemId != -1) {
             try {
-                FXMLLoader loader = new FXMLLoader(BankApp.class.getResource("edit-client-dialog.fxml"));
+                FXMLLoader loader = new FXMLLoader(BankApp.class.getResource("add-edit-client-dialog.fxml"));
                 Stage dialogStage = new Stage();
                 dialogStage.initModality(Modality.WINDOW_MODAL);
                 dialogStage.initOwner(BankApp.primaryStage);
                 dialogStage.setMinWidth(400);
                 dialogStage.setScene(new Scene(loader.load()));
                 dialogStage.setTitle("Редактировать клиента");
-                EditClientDialog controller = loader.getController();
-                controller.setDialogStage(dialogStage, currentItem.getClient());
+                AddEditClientDialog controller = loader.getController();
+                controller.setEditDialogStage(dialogStage, currentItem.getClient());
                 dialogStage.showAndWait();
                 updateList();
             } catch (IOException e) {

@@ -1,9 +1,7 @@
 package com.example.kp.controller.kindcredit;
 
 import com.example.kp.BankApp;
-import com.example.kp.controller.client.AddClientDialog;
-import com.example.kp.controller.client.ClientTableItem;
-import com.example.kp.controller.client.EditClientDialog;
+import com.example.kp.controller.credit.AddEditCreditDialog;
 import com.example.kp.model.KindCredit;
 import com.example.kp.service.KindCreditService;
 import javafx.collections.FXCollections;
@@ -53,15 +51,15 @@ public class KindCreditController {
     @FXML
     void addKindCredit(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(BankApp.class.getResource("add-kind-credit-dialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(BankApp.class.getResource("add-edit-kind-credit-dialog.fxml"));
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(BankApp.primaryStage);
             dialogStage.setMinWidth(400);
             dialogStage.setScene(new Scene(loader.load()));
             dialogStage.setTitle("Добавить кредит");
-            AddKindCreditDialog controller = loader.getController();
-            controller.setDialogStage(dialogStage);
+            AddEditKindCreditDialog controller = loader.getController();
+            controller.setAddDialogStage(dialogStage);
             dialogStage.showAndWait();
             updateList();
         } catch (IOException e) {
@@ -100,15 +98,15 @@ public class KindCreditController {
         int currentItemId = kindCreditsTable.getSelectionModel().getSelectedIndex();
         if (currentItemId != -1) {
             try {
-                FXMLLoader loader = new FXMLLoader(BankApp.class.getResource("edit-kind-credit-dialog.fxml"));
+                FXMLLoader loader = new FXMLLoader(BankApp.class.getResource("add-edit-kind-credit-dialog.fxml"));
                 Stage dialogStage = new Stage();
                 dialogStage.initModality(Modality.WINDOW_MODAL);
                 dialogStage.initOwner(BankApp.primaryStage);
                 dialogStage.setMinWidth(400);
                 dialogStage.setScene(new Scene(loader.load()));
                 dialogStage.setTitle("Редактировать кредит");
-                EditKindCreditDialog controller = loader.getController();
-                controller.setDialogStage(dialogStage, currentItem.getKindCredit());
+                AddEditKindCreditDialog controller = loader.getController();
+                controller.setEditDialogStage(dialogStage, currentItem.getKindCredit());
                 dialogStage.showAndWait();
                 updateList();
             } catch (IOException e) {
