@@ -35,6 +35,6 @@ INSERT INTO public.kind_credit (name,conditions,rate,term) VALUES
 
 INSERT INTO public.credits (kind_credit_id,client_id,summa,"date") VALUES
 	 (1,1,150000,'2024-02-08'),
-	 (6,3,200000,'2025-03-15'),
-	 (6,9,10000000,'2025-03-15');
+	 (3,2,200000,'2025-03-15'),
+	 (3,3,10000000,'2025-03-15');
 

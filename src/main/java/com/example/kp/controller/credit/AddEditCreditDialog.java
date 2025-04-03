@@ -72,8 +72,14 @@ public class AddEditCreditDialog {
 
         List<Client> clients = new ClientService().findAll();
         userField.getItems().addAll(FXCollections.observableList(clients));
+        if (!userField.getItems().isEmpty()){
+            userField.setValue(clients.get(0));
+        }
         List<KindCredit> kindCredits = new KindCreditService().findAll();
         kindCreditField.getItems().addAll(FXCollections.observableList(kindCredits));
+        if (!kindCreditField.getItems().isEmpty()){
+            kindCreditField.setValue(kindCredits.get(0));
+        }
         dateField.setValue(LocalDate.now());
 
         okButton.setOnAction((www) -> add());
